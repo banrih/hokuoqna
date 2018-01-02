@@ -3,8 +3,10 @@
     <div class="cover-inner">
       <div class="cover-contents">
         <h1>北欧のこと</h1>
-        <h1>聞いてみる。答えてみる。</h1>
-        <a href="" class="btn btn-light btn-lg">登録する</a>
+        <h1>聞こう。答えよう。</h1>
+          <% unless logged_in? %>
+            <%= link_to '登録する', signup_path, class: 'btn btn-light btn-lg' %>
+          <% end %>
       </div>
     </div>
   </div>
