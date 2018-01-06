@@ -1,0 +1,26 @@
+<div class="title">
+  <h1 class="text-center">質問</h1>
+</div>
+
+<div class="media-list">
+
+  <img class="mr-3" src="<%= gravatar_url(@post.user, options = { size: 70 }) %>" alt="">
+  <div class="media-body">
+    <div>
+      <%= link_to @post.user.name, user_path(@post.user) %><span class="text-muted">さんの質問 <%= @post.created_at %> </span>
+    </div>
+    <div>
+      <p>タイトル</p>
+      <p><%= @post.title %></p>
+    </div>
+    <div>
+      <p>内容</p>
+      <p><%= @post.content %></p>
+    </div>
+    <div>
+      <% if current_user == @post.user %>
+        <%= link_to "削除", @post, method: :delete, data: { confirm: "本当に削除しますか？" }, class: 'btn btn-outline-danger btn-sm' %>
+      <% end %>
+    </div>
+  </div>
+</div>

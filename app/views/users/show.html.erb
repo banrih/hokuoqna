@@ -1,8 +1,26 @@
-<div class=" title user-profile">
+<div class="title user-profile">
   <div class="icon text-center">
-    <img src="<%= gravatar_url(current_user, size: 100) %>" alt="" class="img-circle">
+    <img src="<%= gravatar_url(@user, size: 100) %>" alt="">
   </div>
   <div class="name text-center">
     <h1><%= @user.name %></h1>
   </div>
+  <ul class="list-unstyled">
+    <li>
+      <div class="status text-center">
+        <div class="status-label">自分の質問</div>
+        <div class="status-value">
+          xxx
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="status text-center">
+        <div class="status-label">お気に入りの質問</div>
+        <div class="status-value">
+          xxx
+        </div>
+      </div>
+    </li>
+  </ul>  
 </div>

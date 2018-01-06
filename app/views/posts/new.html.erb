@@ -1,0 +1,17 @@
+<div class="title">
+  <h1 class="text-center">質問してみる？</h1>
+</div>
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <%= form_for(@post) do |f| %>
+      <div class="form-group">
+        <%= f.text_field :title, class: 'form-control', placeholder: 'タイトル' %>
+      </div>
+        
+      <div class="form-group">
+        <%= f.text_area :content, class: 'form-control', placeholder: '質問したいこと', rows: 5 %>
+      </div>
+      <%= f.submit '送信', class: 'btn btn-outline-dark btn-block' %>
+    <% end %>
+  </div>
+</div>

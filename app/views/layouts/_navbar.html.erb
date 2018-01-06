@@ -7,7 +7,7 @@
     
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <% if logged_in? %>
-        <ul class="navbar-nav">
+        <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= current_user.name %></span>
@@ -17,9 +17,11 @@
               <%= link_to 'ログアウト', logout_path, method: :delete, class: 'dropdown-item' %>
             </div>
           </li>
+          <li class="nav-item"><a class="nav-link" href="#">ランキング</a></li>
+          <li class="nav-item"><%= link_to '質問する', new_post_path, class: 'nav-link' %></li>
         </ul>
       <% else %>
-        <ul class="navbar-nav navbar-right">
+        <ul class="navbar-nav ml-auto">
           <li class="nav-item"><%= link_to '新規登録', signup_path, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to 'ログイン', login_path, class: 'nav-link' %></li>
         </ul>
