@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'likes/create'
+
+  get 'likes/destroy'
+
   root to: 'toppages#index'
   
   get 'login', to: 'sessions#new'
@@ -9,4 +13,5 @@ Rails.application.routes.draw do
   get 'signup', to: 'users#new'
   resources :users, only: [:show, :new, :create]
   resources :posts, only: [:show, :new, :create, :destroy]
+  resources :likes, only: [:create, :destroy]
 end

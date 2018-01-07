@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:index, :show]
+  before_action :require_user_logged_in, only: [:index, :show, :likes]
   
   def show
     @user = User.find(params[:id])
@@ -21,6 +21,12 @@ class UsersController < ApplicationController
       flash.now[:danger] = '登録失敗！'
       render :new
     end
+  end
+  
+  def like_posts
+    @user = User.find(params[:id])
+    @like_posts = @user.like_posts.page(params[:page])
+    counts(@user)
   end
   
   

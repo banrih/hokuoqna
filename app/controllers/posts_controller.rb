@@ -25,6 +25,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
+    Like.where(post_id: @post.id).delete_all
     @post.destroy
     flash[:success] = '削除完了！'
     redirect_to root_url

@@ -2,12 +2,11 @@
   <h1 class="text-center">質問</h1>
 </div>
 
-<div class="media-list">
-
+<div class="media">
   <img class="mr-3" src="<%= gravatar_url(@post.user, options = { size: 70 }) %>" alt="">
   <div class="media-body">
     <div>
-      <%= link_to @post.user.name, user_path(@post.user) %><span class="text-muted">さんの質問 <%= @post.created_at %> </span>
+      <%= link_to @post.user.name, user_path(@post.user), class: 'badge badge-secondary' %><span class="text-muted">さんの質問 <%= @post.created_at %> </span>
     </div>
     <div>
       <p>タイトル</p>
@@ -16,6 +15,9 @@
     <div>
       <p>内容</p>
       <p><%= @post.content %></p>
+    </div>
+    <div>
+      <%= render 'likes/like_button', user: @user %>
     </div>
     <div>
       <% if current_user == @post.user %>
