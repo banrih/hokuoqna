@@ -8,6 +8,8 @@ class User < ApplicationRecord
   
   # 1:多のアソシエーション
   has_many :posts
+  has_many :comments
+  
   # Like機能のアソシエーション 
   has_many :likes
   has_many :like_posts, through: :likes, source: :post

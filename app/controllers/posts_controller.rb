@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     else
       @posts = current_user.posts.order('created_at DESC').page(params[:page])
       flash.now[:danger] = '送信失敗！'
-      render 'toppages/index'
+      render 'new'
     end
   end
 

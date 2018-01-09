@@ -17,7 +17,7 @@
               <%= link_to 'ログアウト', logout_path, method: :delete, class: 'dropdown-item' %>
             </div>
           </li>
-          <li class="nav-item"><a class="nav-link" href="#">ランキング</a></li>
+          <li class="nav-item"><%= link_to 'ランキング', rankings_like_path, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to '質問する', new_post_path, class: 'nav-link' %></li>
         </ul>
       <% else %>
