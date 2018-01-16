@@ -2,12 +2,18 @@ class CommentsController < ApplicationController
   before_action :require_user_logged_in
   before_action :correct_user, only: [:destroy]
   
+  def show
+    @comments = @post.comments.order('created_at ASC').page(params[:page])
+  end
+  
   def new
     @comment = Comment.new
   end
   
   def create
+    post = Post.find(params[:post_id])
     @comment = current_user.comments.build(comment_params)
+    @comment.post = Post.find(params[:post_id])
     
     if @comment.save
       flash[:success] = '送信完了！'
@@ -15,12 +21,12 @@ class CommentsController < ApplicationController
     else
       @comment = current_user.comments.order('created_at DESC').page(params[:page])
       flash.now[:danger] = '送信失敗！'
-      render 'new'
+      render 'comments/new'
     end
   end
 
   def destroy
-    @comment = comment.find(params[:id])
+    @comment = Comment.find(params[:id])
     @comment.destroy
     flash[:success] = '削除完了！'
     redirect_to root_url

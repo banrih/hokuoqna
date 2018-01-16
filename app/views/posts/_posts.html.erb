@@ -1,12 +1,8 @@
-<div class="title">
-  <h1 class="text-center">質問一覧</h1>
-</div>
-
-<ul class="media-list">
-  <% @posts.each do |post| %>
+<ul class="title media-list">
+  <% posts.each do |post| %>
     <% user = post.user %>
     <li class="media">
-      <img class="mr-3" src="<%= gravatar_url(user, options = { size: 70 }) %>" alt="">
+      <img class="mr-3 rounded" src="<%= gravatar_url(user, options = { size: 70 }) %>" alt="">
       <div class="media-body">
         <div>
          <%= link_to user.name, user_path(user), class: 'badge badge-secondary' %> <span class="text-muted">さんの質問 <%= post.created_at %> </span>
@@ -17,5 +13,5 @@
       </div>
     </li>
   <% end %>
-  <%= paginate @posts %>
+  <%= paginate posts %>
 </ul>

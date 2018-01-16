@@ -1,16 +1,8 @@
-<div class="title">
-  <h1 class="text-center">コメント</h1>
-</div>
-
-<div>
-  <%= render 'comments/new', comment: @comment %>
-</div>
-
 <ul class="media-list">
-  <% @comments.each do |comment| %>
+  <% @post.comments.each do |comment| %>
     <% user = comment.user %>
     <li class="media">
-      <img class="mr-3" src="<%= gravatar_url(user, options = { size: 70 }) %>" alt="">
+      <img class="mr-3 rounded" src="<%= gravatar_url(user, options = { size: 70 }) %>" alt="">
       <div class="media-body">
         <div>
          <%= link_to user.name, user_path(user), class: 'badge badge-secondary' %> <span class="text-muted">さんのコメント <%= comment.created_at %> </span>
@@ -18,8 +10,13 @@
         <div>
           <p><%= comment.content %></p>
         </div>
+        <div>
+          <% if current_user == comment.user %>
+            <%= link_to "削除", post_comment_path(@post, comment), method: :delete, data: { confirm: "本当に削除しますか？" }, class: 'btn btn-outline-danger btn-sm' %>
+          <% end %>
+        </div>
       </div>
     </li>
   <% end %>
-  <%= paginate @comments %>
+  <%= paginate comments %>
 </ul>

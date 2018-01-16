@@ -1,21 +1,25 @@
-<h1 class="title text-center">Like質問ランキング</h1>
+<h1 class="title text-center">ランキング</h1>
 <% if @posts.present? %>
-  <ul class="media-list list-unstyled">
-    <% @posts.each_with_index do |post, index| %>
-      <li>
-        <h4 class="text-center"><span class="badge badge-info"><%= index+1 %>位: <%= @ranking_counts[post.id] %> Likes</span></h1>
-      </li>
-      <li class="media">
-        <img class="mr-3" src="<%= gravatar_url(post.user, options = { size: 70 }) %>" alt="">
-        <div class="media-body">
-          <div>
-            <%= link_to post.user.name, user_path(post.user), class: 'badge badge-secondary' %> <span class="text-muted">さんの質問 <%= post.created_at %> </span>
-          </div>
-          <div>
-            <p><%= link_to post.title, post_path(post), class: 'btn btn-outline-link' %></p>
-          </div>
-        </div>
-      </li>
-    <% end %>
-  </ul>
+  <div class="title row">
+    <div class="col-md-6 offset-md-3">
+      <ul class="media-list list-unstyled">
+        <% @posts.each_with_index do |post, index| %>
+          <li class="text-center">
+            <h4><%= index+1 %>位: <span class="badge badge-info"><%= @ranking_counts[post.id] %> Likes</span></h1>
+          </li>
+          <li class="media">
+            <img class="mr-3 rounded" src="<%= gravatar_url(post.user, options = { size: 70 }) %>" alt="">
+            <div class="media-body">
+              <div>
+                <%= link_to post.user.name, user_path(post.user), class: 'badge badge-secondary' %> <span class="text-muted">さんの質問 <%= post.created_at %> </span>
+              </div>
+              <div>
+                <p><%= link_to post.title, post_path(post), class: 'btn btn-outline-link' %></p>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 <% end %>
