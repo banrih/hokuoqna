@@ -19,9 +19,13 @@ class CommentsController < ApplicationController
       flash[:success] = '送信完了！'
       redirect_to root_url
     else
-      @comment = current_user.comments.order('created_at DESC').page(params[:page])
+      @post = Post.find(params[:post_id])
+      @comment = Comment.new
+      @comments = @post.comments.order('created_at ASC').page(params[:page])
+      
+      # @comment = current_user.comments.order('created_at ASC').page(params[:page])
       flash.now[:danger] = '送信失敗！'
-      render 'comments/new'
+      render 'posts/show'
     end
   end
 
