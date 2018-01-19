@@ -1,8 +1,6 @@
 <div class="title">
   <h1 class="text-center">質問</h1>
 </div>
-
-<div class="row">
   <div class="media col-md-6 offset-md-3">
     <img class="mr-3 rounded" src="<%= gravatar_url(@post.user, options = { size: 70 }) %>" alt="">
     <div class="media-body">
@@ -25,7 +23,6 @@
       </ul>
     </div>
   </div>
-</div>
 <div>
   <%= render 'comments/new', post: @post, comment: @comment %>
 </div>
